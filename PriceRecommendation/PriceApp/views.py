@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
@@ -27,7 +28,7 @@ def register(request):
         request.session['firstname'] =user.firstname
         request.session['id'] =user.id
         return redirect('/dashboard')
-
+@login_required
 def dashboard(request):
     user=User.objects.get(id=request.session['id'])
     context={
