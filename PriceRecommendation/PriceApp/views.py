@@ -56,3 +56,6 @@ def logout(request):
     request.session.clear()
     return redirect('/')
 
+
+def predict(request) : 
+    print(hello)

@@ -21,12 +21,19 @@ class UserManager(models.Manager):
 class User(models.Model):
     firstname = models.CharField(max_length=45)
     lastname=models.CharField(max_length=45)
-    email=models.EmailField(max_length=45)
     password=models.CharField(max_length=255)
+    email=models.EmailField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects=UserManager()
 
 
-
+class Product(models.Model) : 
+    product_id = models.IntegerField(max_length=9)
+    product_name = models.TextField(max_length=255)
+    item_condition_id = models.IntegerField(max_length=2)
+    category = models.TextField(max_length=500)
+    shipping = models.IntegerField(max_length=2)
+    price = models.FloatField(max_length=9)
+    item_description = models.TextField(max_length=500)
 
