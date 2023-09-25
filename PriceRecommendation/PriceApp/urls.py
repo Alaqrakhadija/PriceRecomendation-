@@ -1,12 +1,13 @@
-from django.urls import path     
+from django.urls import path
 from . import views
-urlpatterns = [
-    path('', views.index),	
-    path('register',views.register),
-    path('dashboard',views.dashboard),
-    path('login',views.login),
-    path('logout',views.logout),
 
-    path('predict', views.predict)
-    
+urlpatterns = [
+    path('', views.index),
+    path('register', views.register),
+    path('dashboard', views.dashboard),
+    path('login', views.login),
+    path('logout', views.logout),
+    path('price', views.price_form),
+    path('price/predict', views.predict)
+
 ]
