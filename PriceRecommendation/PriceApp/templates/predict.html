@@ -173,7 +173,7 @@ button:hover {
     <div class="container">
         <div class="form-container">
             <h1>Price Recommendation System</h1>
-            <form id="predict-form"  method="post" action="price/predict">
+            <form id="predict-form"  method="post" action="/predict">
                 <div class="input-group">
                     <label for="product-name">Product Name:</label>
                     <input type="text" id="product-name" required>
@@ -193,6 +193,12 @@ button:hover {
                     <input type="text" id="category" placeholder="e.g., Electronics/Phones/Smartphones" required>
                     <div id="category-error" class="error-message"></div>
                 </div>
+                <div class="input-group">
+                    <label for="brand_name">Brand:</label>
+                    <input type="text" id="category" required>
+                    <div id="category-error" class="error-message"></div>
+                </div>
+
                 <div class="input-group2">
                     <label for="shipping">Shipping:</label>
                     <select id="shipping" required>
@@ -207,9 +213,11 @@ button:hover {
                 <button type="submit">Predict Price</button>
             </form>
         </div>
-         <div class="square">
-            <div id="predicted-price" class="predicted-price-value">150.9 USD</div>
+        {%if predicted_price%}
+        <div class="square">
+            <div id="predicted-price" class="predicted-price-value">Predicted Price: ${{ predicted_price }}</div>
         </div>
+        {%endif%}
     </div>
     <script>
 
@@ -254,12 +262,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const itemDescription = document.getElementById("item-description").value;
 
         // Check if the category matches the pattern
-        if (!isValidCategory(category)) {
-            categoryErrorMessage.textContent = "Category must match the pattern 'main_cat/sub_cat1/sub_cat2'";
-            return;
-        } else {
-            categoryErrorMessage.textContent = ""; // Clear any previous error message
-        }
+        
+        // if (!isValidCategory(category)) {
+        //     categoryErrorMessage.textContent = "Category must match the pattern 'main_cat/sub_cat1/sub_cat2'";
+        //     return;
+        // } else {
+        //     categoryErrorMessage.textContent = ""; // Clear any previous error message
+        // }
 
         const predictedPrice = calculatePrice(itemCondition, shipping);
 
