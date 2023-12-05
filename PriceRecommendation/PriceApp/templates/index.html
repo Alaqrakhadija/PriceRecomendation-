@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Price Prediction</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #263238;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #263238;
+            border: 1px solid #263238;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #263238;
+            border: 1px solid #263238;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3%;
+        }
+
+        form {
+            width: 50%;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,select{
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+        select {
+    width: 107%;
+
+}
+
+
+        button {
+            color: #fff;
+            background-color: #263238;
+            border: 1px solid #263238;
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #263238;
+            border-color: #263238;
+        }
+
+        .result {
+            text-align: center;
+            background-color: #d6d9dc;
+            padding: 15px;
+            border: 1px solid #d6d9dc;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #263238;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Price Prediction System</h1>
+        <a  role="button" type="submit" href="/logout" class="btn btn-danger">Logout</a>
+    </header>
+
+<div class="container">
+        <form action="/predict" method="post">
+            {% csrf_token %}
+<table>
+    <tr>
+        <td><label for="name">Name:</label></td>
+        <td><input type="text" class="form-control" name="name" required></td>
+    </tr>
+ <tr>
+    <td><label for="item_condition_id">Item Condition:</label></td>
+    <td>
+        <select class="form-control" name="item_condition_id" required>
+            <option value="1">Excellent</option>
+            <option value="2">Very Good</option>
+            <option value="3">Good</option>
+            <option value="4">Fair</option>
+            <option value="5">Poor</option>
+        </select>
+    </td>
+</tr>
+    <tr>
+        <td><label for="category_name">Category Name:</label></td>
+        <td><input type="text" class="form-control" name="category_name" required></td>
+    </tr>
+    <tr>
+        <td><label for="brand_name">Brand Name:</label></td>
+        <td><input type="text" class="form-control" name="brand_name" required></td>
+    </tr>
+<tr>
+    <td><label for="shipping">Shipping:</label></td>
+    <td style="display: flex;margin-left: -80px">
+        <input type="radio" name="shipping" value="1"  required id="r1"><label  style="margin-left: -80px" for="r1"> Yes</label>
+       <input type="radio" name="shipping" value="0"  required id="r2"> <label  style="margin-left: -80px" for="r2"> No</label>
+    </td>
+</tr>
+
+
+    <tr>
+        <td><label for="item_description">Item Description:</label></td>
+        <td><input type="text" class="form-control" name="item_description" required></td>
+    </tr>
+</table>
+            <p><button type="submit" class="btn btn-primary" name="modeling">Submit</button></p>
+        </form>
+
+        </div>
+    {% if predicted_price %}
+    <div class="result">
+            <div>
+                <h2>Predicted Price: $ {{ predicted_price }}</h2>
+            </div>
+    </div>
+        {% endif %}
+</body>
+
+</html>
