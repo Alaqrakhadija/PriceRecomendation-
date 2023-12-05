@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', views.login),
     path('logout', views.logout),
     path('price', views.price_form),
-    path('price/predict', views.predict)
+    path('predict', views.predict)
 
 ]
+
