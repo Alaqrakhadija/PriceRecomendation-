@@ -29,11 +29,10 @@ class User(models.Model):
 
 
 class Product(models.Model) : 
-    product_id = models.IntegerField(max_length=9)
+    product_id = models.IntegerField()
     product_name = models.TextField(max_length=255)
-    item_condition_id = models.IntegerField(max_length=2)
+    item_condition_id = models.IntegerField()
     category = models.TextField(max_length=500)
-    shipping = models.IntegerField(max_length=2)
+    shipping = models.IntegerField()
     price = models.FloatField(max_length=9)
     item_description = models.TextField(max_length=500)
-
