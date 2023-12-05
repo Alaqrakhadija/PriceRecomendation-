@@ -16,6 +16,7 @@ Root Mean Squared Error (RMSE):
 1. RMSE is a valuable metric for assessing the accuracy of regression models, providing insight into how well the model's predictions match the observed data and the magnitude of errors.
 2. Useful especially when you want to understand how far, on average, your predictions are from the actual data points.
 3. RMSE gives more weight to larger errors due to the squaring operation. Therefore, it is sensitive to outliers in the data. If your dataset contains outliers,RMSE can be affected and may not accurately represent the overall model performance.
+   
 ![photo_2023-12-05_21-18-55](https://github.com/Alaqrakhadija/PriceRecomendation-/assets/102253516/c2e150ad-dec7-43e0-9162-98aef2b580a3)
 
 ### Future steps:
